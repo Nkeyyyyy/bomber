@@ -80,6 +80,42 @@ button:hover {
     background-color: #00ff9d;
 }
 
+/* 禁用态按钮 */
+.btn-disabled {
+    background-color: #c0c4cc;
+    color: #ffffff;
+    cursor: not-allowed;
+    opacity: 0.8;
+    position: relative;
+}
+
+/* 禁止点击事件 */
+.btn-disabled {
+    pointer-events: none;
+}
+
+/* 悬浮禁用提示 */
+.btn-disabled::after {
+    content: "功能暂未开放";
+    position: absolute;
+    top: -38px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* 悬浮时显示 */
+.btn-disabled:hover::after {
+    opacity: 1;
+}
+
 /* 停止发送按钮 - 红色 */
 .btn-stop {
     color: #ff4757;
@@ -257,7 +293,8 @@ button:hover {
         <label for="phoneNumber"></label>
         <input type="text" id="phoneNumber" name="phoneNumber" placeholder="请输入手机号" required><br><br>
 
-        <button type="button" id="sendBtn" class="btn-start" onclick="sendRequests()">📣 开始发送</button>
+        <button type="button" id="sendBtn" class="btn-start btn-disabled" disabled>🚫 暂停开放 </button>
+            <!--<button type="button" id="sendBtn" class="btn-start" onclick="sendRequests()">📣 开始发送</button>-->
         <button type="button" id="stopBtn" class="btn-stop" onclick="stopRequests()">⏹️ 停止发送</button>
     </form>
     
